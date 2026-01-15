@@ -188,14 +188,14 @@
                     È un'iniziativa legale?
                     <i class="fas fa-chevron-down text-sm transition group-open:rotate-180"></i>
                 </summary>
-                <p class="mt-4 text-gray-400 leading-relaxed">Il nostro movimento promuove il dissenso culturale e l'obiezione fiscale attraverso strumenti leciti, elusione consapevole e informazione. Non incitiamo ad atti illegali violenti, ma alla consapevolezza del proprio diritto alla proprietà.</p>
+                <p class="mt-4 text-gray-400 leading-relaxed">Il nostro movimento promuove il dissenso culturale attraverso strumenti leciti, informazione e consulenza legale. Non incoraggiamo attività illegali e invitiamo tutti a informarsi adeguatamente sui limiti della legge.</p>
             </details>
             <details class="group bg-zinc-900 rounded-lg p-6 border border-white/5 cursor-pointer">
                 <summary class="font-bold text-lg list-none flex justify-between items-center uppercase tracking-tight">
                     Come posso contribuire?
                     <i class="fas fa-chevron-down text-sm transition group-open:rotate-180"></i>
                 </summary>
-                <p class="mt-4 text-gray-400 leading-relaxed">Puoi iniziare diffondendo i nostri contenuti, partecipando alle assemblee locali e applicando strategie di ottimizzazione fiscale che riducano il gettito destinato agli sprechi pubblici.</p>
+                <p class="mt-4 text-gray-400 leading-relaxed">Puoi iniziare diffondendo i nostri contenuti, partecipando alle assemblee locali e informandoti sulle pratiche di ottimizzazione e tutela del risparmio in modo legale e responsabile.</p>
             </details>
         </div>
     </section>
@@ -229,8 +229,13 @@
     </footer>
 
     <script>
+        // Ottieni elementi in modo robusto
         const canvas = document.getElementById('meme-canvas');
-        const ctx = canvas.getContext('2d');
+        let ctx = null;
+        if (canvas) {
+            ctx = canvas.getContext('2d');
+        }
+
         let currentStyle = 'red';
 
         // ScrollReveal con impostazioni di fallback
@@ -258,7 +263,9 @@
         }
 
         function generateMeme() {
-            const text = document.getElementById('meme-text').value.toUpperCase() || "BOICOTTIAMO LE TASSE";
+            if (!ctx || !canvas) return;
+
+            const text = (document.getElementById('meme-text').value || "BOICOTTIAMO LE TASSE").toUpperCase();
             
             let bgColor = "#ff3333";
             let textColor = "#ffffff";
@@ -278,9 +285,9 @@
             ctx.fillStyle = bgColor;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Texture grunge simulata
+            // Texture grunge simulata (attenzione: può essere pesante su dispositivi lenti)
             ctx.globalAlpha = 0.05;
-            for(let i=0; i<3000; i++) {
+            for(let i=0; i<1500; i++) {
                 ctx.fillStyle = "#ffffff";
                 ctx.fillRect(Math.random()*canvas.width, Math.random()*canvas.height, 2, 2);
             }
@@ -304,14 +311,14 @@
                 ctx.fillText(word, canvas.width/2, startY + (index * 80));
             });
 
-            // Firma
+            // Firma (senza proprietà non supportate)
             ctx.fillStyle = accentColor;
             ctx.font = "700 18px Roboto";
-            ctx.letterSpacing = "4px";
             ctx.fillText("RIPRENDITI IL TUO LAVORO", canvas.width / 2, canvas.height - 80);
         }
 
         function downloadMeme() {
+            if (!canvas) return;
             const link = document.createElement('a');
             link.download = 'boicottiamo-tasse.png';
             link.href = canvas.toDataURL();
@@ -322,7 +329,9 @@
         const marquee = document.getElementById('marquee');
         let offset = 0;
         function animateMarquee() {
+            if (!marquee) return;
             offset -= 1.5;
+            // reset quando si è scrollata metà del contenuto ripetuto
             if (Math.abs(offset) >= marquee.scrollWidth / 2) {
                 offset = 0;
             }
