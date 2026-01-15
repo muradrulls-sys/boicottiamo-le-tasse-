@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boicottiamo Le Tasse | Il Manifesto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- ScrollReveal rimosso o gestito meglio per evitare sparizioni -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0f0f0f;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .accent-red { color: #ff3333; }
+        .bg-accent-red { background-color: #ff3333; }
+
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-bottom: 4px solid #ff3333;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 1 !important; /* Forza visibilità */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: #222;
+            border-color: #ff3333;
+        }
+
+        #meme-canvas {
+            border: 8px solid #333;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Classe per animazioni se ScrollReveal fallisce */
+        .reveal-visible { opacity: 1 !important; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="p-5 flex justify-between items-center border-b border-white/10 bg-black/90 backdrop-blur-md sticky top-0 z-50">
+        <div class="text-2xl font-black tracking-tighter flex items-center">
+            <i class="fas fa-hand-fist accent-red mr-2"></i>
+            BOICOTTIAMO<span class="accent-red">LE TASSE</span>
+        </div>
+        <div class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest">
+            <a href="#manifesto" class="hover:text-red-500 transition font-bold">Il Manifesto</a>
+            <a href="#strumenti" class="hover:text-red-500 transition font-bold">Social Tools</a>
+            <a href="#faq" class="hover:text-red-500 transition font-bold">FAQ</a>
+            <a href="#unisciti" class="bg-accent-red px-5 py-2 rounded-sm hover:bg-red-700 transition shadow-lg shadow-red-500/20 font-bold">Partecipa</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-gradient h-screen flex flex-col justify-center items-center text-center px-4">
+        <div class="reveal">
+            <span class="bg-accent-red text-white text-xs font-bold px-3 py-1 mb-6 inline-block tracking-widest uppercase">Movimento per la Libertà Fiscale</span>
+            <h1 class="text-7xl md:text-9xl font-black mb-4 leading-none tracking-tighter">LIBERI DAL <br><span class="accent-red underline decoration-white/10">PRELIEVO</span></h1>
+            <p class="text-lg md:text-xl max-w-2xl font-light mb-10 text-gray-300">Il tuo lavoro è tuo. Riprenditi il controllo del tuo futuro economico. Unisciti alla protesta pacifica.</p>
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6">
+                <a href="#manifesto" class="bg-accent-red text-white px-10 py-4 rounded-sm font-bold uppercase hover:bg-red-700 transition flex items-center justify-center">
+                    Scopri il Piano <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                </a>
+                <button onclick="scrollToGenerator()" class="bg-white text-black px-10 py-4 rounded-sm font-bold uppercase hover:bg-gray-200 transition">Crea Contenuti</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Marquee -->
+    <section class="py-10 bg-accent-red text-black overflow-hidden relative">
+        <div id="marquee" class="flex whitespace-nowrap font-black text-2xl uppercase italic">
+            <span class="mx-4">Sapevi che fino a giugno lavori solo per lo stato? • </span>
+            <span class="mx-4">Rifiuta l'oppressione • </span>
+            <span class="mx-4">Proprietà privata è libertà • </span>
+            <span class="mx-4">Boicottiamo le tasse • </span>
+            <span class="mx-4">Sapevi che fino a giugno lavori solo per lo stato? • </span>
+            <span class="mx-4">Rifiuta l'oppressione • </span>
+            <span class="mx-4">Proprietà privata è libertà • </span>
+            <span class="mx-4">Boicottiamo le tasse • </span>
+        </div>
+    </section>
+
+    <!-- Manifesto -->
+    <section id="manifesto" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16 reveal">
+            <h2 class="text-5xl font-black mb-4 italic">I 4 Pilastri della Rivolta</h2>
+            <div class="w-24 h-2 bg-accent-red mx-auto"></div>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="card p-8 reveal">
+                <div class="w-12 h-12 bg-white/5 rounded flex items-center justify-center mb-6">
+                    <i class="fas fa-key text-2xl accent-red"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Sovranità Individuale</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Tu sei l'unico proprietario dei frutti del tuo ingegno e della tua fatica. Lo Stato non è un socio di maggioranza.</p>
+            </div>
+            <div class="card p-8 reveal">
+                <div class="w-12 h-12 bg-white/5 rounded flex items-center justify-center mb-6">
+                    <i class="fas fa-eye-slash text-2xl accent-red"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Stop agli Sprechi</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Milioni di euro finiscono in burocrazia inutile. Boicottare significa togliere linfa vitale a un sistema inefficiente.</p>
+            </div>
+            <div class="card p-8 reveal">
+                <div class="w-12 h-12 bg-white/5 rounded flex items-center justify-center mb-6">
+                    <i class="fas fa-shield-halved text-2xl accent-red"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Resistenza Fiscale</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Il dissenso è un diritto. Utilizziamo ogni mezzo legale e morale per ridurre l'invadenza fiscale nelle nostre vite.</p>
+            </div>
+            <div class="card p-8 reveal">
+                <div class="w-12 h-12 bg-white/5 rounded flex items-center justify-center mb-6">
+                    <i class="fas fa-handshake-angle text-2xl accent-red"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Aiuto Mutuo</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Creiamo reti di supporto per chi decide di opporsi, condividendo strategie e assistenza legale.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strumento: Generatore di Poster -->
+    <section id="strumenti" class="bg-zinc-950 py-24 px-6 border-y border-white/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="lg:w-1/2 reveal text-left">
+                    <h2 class="text-4xl font-black mb-6">Arma la tua <span class="accent-red">Comunicazione</span></h2>
+                    <p class="mb-8 text-gray-400 text-lg">Non servono proiettili, servono idee. Usa il nostro generatore per creare messaggi d'impatto da diffondere ovunque.</p>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Il tuo Slogan</label>
+                            <input type="text" id="meme-text" placeholder="ES: TASSE = FURTO" 
+                                   class="w-full p-4 bg-zinc-900 border border-zinc-800 rounded focus:border-red-500 transition outline-none text-white">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Seleziona Mood</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button onclick="setMemeStyle('red')" class="p-3 bg-red-600 rounded text-xs font-bold uppercase hover:bg-red-700 transition">Riot</button>
+                                <button onclick="setMemeStyle('black')" class="p-3 bg-zinc-800 rounded text-xs font-bold uppercase hover:bg-zinc-700 transition">Dark</button>
+                                <button onclick="setMemeStyle('yellow')" class="p-3 bg-yellow-500 text-black rounded text-xs font-bold uppercase hover:bg-yellow-600 transition">Alert</button>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-4 space-y-3">
+                            <button onclick="generateMeme()" class="w-full bg-white text-black py-4 rounded font-black uppercase hover:bg-red-500 hover:text-white transition">Aggiorna Anteprima</button>
+                            <button onclick="downloadMeme()" class="w-full border border-zinc-700 py-4 rounded font-bold uppercase hover:bg-zinc-800 transition">Scarica Immagine</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 flex justify-center items-center">
+                    <canvas id="meme-canvas" width="600" height="600" class="rounded shadow-2xl"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 px-6 max-w-4xl mx-auto">
+        <h2 class="text-4xl font-black mb-12 text-center italic reveal">Domande Frequenti</h2>
+        <div class="space-y-4 reveal">
+            <details class="group bg-zinc-900 rounded-lg p-6 border border-white/5 cursor-pointer">
+                <summary class="font-bold text-lg list-none flex justify-between items-center uppercase tracking-tight">
+                    È un'iniziativa legale?
+                    <i class="fas fa-chevron-down text-sm transition group-open:rotate-180"></i>
+                </summary>
+                <p class="mt-4 text-gray-400 leading-relaxed">Il nostro movimento promuove il dissenso culturale e l'obiezione fiscale attraverso strumenti leciti, elusione consapevole e informazione. Non incitiamo ad atti illegali violenti, ma alla consapevolezza del proprio diritto alla proprietà.</p>
+            </details>
+            <details class="group bg-zinc-900 rounded-lg p-6 border border-white/5 cursor-pointer">
+                <summary class="font-bold text-lg list-none flex justify-between items-center uppercase tracking-tight">
+                    Come posso contribuire?
+                    <i class="fas fa-chevron-down text-sm transition group-open:rotate-180"></i>
+                </summary>
+                <p class="mt-4 text-gray-400 leading-relaxed">Puoi iniziare diffondendo i nostri contenuti, partecipando alle assemblee locali e applicando strategie di ottimizzazione fiscale che riducano il gettito destinato agli sprechi pubblici.</p>
+            </details>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="unisciti" class="bg-black py-20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+            <div>
+                <div class="text-2xl font-black mb-6">BOICOTTIAMO<span class="accent-red">LE TASSE</span></div>
+                <p class="text-gray-500 text-sm">Non siamo un partito. Siamo una necessità. La difesa del risparmio è l'ultimo baluardo della democrazia reale.</p>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase mb-6 text-sm">Contatti & Social</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded bg-zinc-900 flex items-center justify-center hover:bg-red-500 transition"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded bg-zinc-900 flex items-center justify-center hover:bg-red-500 transition"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="w-10 h-10 rounded bg-zinc-900 flex items-center justify-center hover:bg-red-500 transition"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase mb-6 text-sm">Newsletter</h4>
+                <form class="flex space-x-2">
+                    <input type="email" placeholder="Email" class="bg-zinc-900 border-none p-3 rounded flex-1 text-sm outline-none focus:ring-1 ring-red-500 text-white">
+                    <button type="button" class="bg-accent-red px-4 py-2 rounded font-bold uppercase text-xs">Vai</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-16 text-xs text-gray-700 font-bold uppercase tracking-widest">
+            © 2026 LIBERTÀ FISCALE • SENZA COMPROMESSI
+        </div>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('meme-canvas');
+        const ctx = canvas.getContext('2d');
+        let currentStyle = 'red';
+
+        // ScrollReveal con impostazioni di fallback
+        try {
+            ScrollReveal().reveal('.reveal', { 
+                delay: 150, 
+                distance: '20px',
+                origin: 'bottom',
+                duration: 800,
+                interval: 80,
+                afterReveal: function (el) { el.style.opacity = '1'; }
+            });
+        } catch(e) {
+            console.log("ScrollReveal non caricato, forzo visibilità");
+            document.querySelectorAll('.reveal').forEach(el => el.style.opacity = '1');
+        }
+
+        function scrollToGenerator() {
+            document.getElementById('strumenti').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function setMemeStyle(style) {
+            currentStyle = style;
+            generateMeme();
+        }
+
+        function generateMeme() {
+            const text = document.getElementById('meme-text').value.toUpperCase() || "BOICOTTIAMO LE TASSE";
+            
+            let bgColor = "#ff3333";
+            let textColor = "#ffffff";
+            let accentColor = "#000000";
+
+            if(currentStyle === 'black') {
+                bgColor = "#0a0a0a";
+                textColor = "#ff3333";
+                accentColor = "#ffffff";
+            } else if(currentStyle === 'yellow') {
+                bgColor = "#fbbf24";
+                textColor = "#000000";
+                accentColor = "#000000";
+            }
+
+            // Sfondo
+            ctx.fillStyle = bgColor;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Texture grunge simulata
+            ctx.globalAlpha = 0.05;
+            for(let i=0; i<3000; i++) {
+                ctx.fillStyle = "#ffffff";
+                ctx.fillRect(Math.random()*canvas.width, Math.random()*canvas.height, 2, 2);
+            }
+            ctx.globalAlpha = 1.0;
+
+            // Cornice
+            ctx.strokeStyle = textColor;
+            ctx.lineWidth = 20;
+            ctx.strokeRect(30, 30, canvas.width - 60, canvas.height - 60);
+
+            // Testo
+            ctx.fillStyle = textColor;
+            ctx.font = "900 65px Oswald";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            
+            const words = text.split(' ');
+            let startY = (canvas.height / 2) - ((words.length - 1) * 40);
+            
+            words.forEach((word, index) => {
+                ctx.fillText(word, canvas.width/2, startY + (index * 80));
+            });
+
+            // Firma
+            ctx.fillStyle = accentColor;
+            ctx.font = "700 18px Roboto";
+            ctx.letterSpacing = "4px";
+            ctx.fillText("RIPRENDITI IL TUO LAVORO", canvas.width / 2, canvas.height - 80);
+        }
+
+        function downloadMeme() {
+            const link = document.createElement('a');
+            link.download = 'boicottiamo-tasse.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Marquee Animation
+        const marquee = document.getElementById('marquee');
+        let offset = 0;
+        function animateMarquee() {
+            offset -= 1.5;
+            if (Math.abs(offset) >= marquee.scrollWidth / 2) {
+                offset = 0;
+            }
+            marquee.style.transform = `translateX(${offset}px)`;
+            requestAnimationFrame(animateMarquee);
+        }
+
+        window.onload = () => {
+            generateMeme();
+            animateMarquee();
+        };
+    </script>
+</body>
+</html>
